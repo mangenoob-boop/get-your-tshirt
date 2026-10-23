@@ -8,3 +8,5 @@
 
 /* Configurateur recto verso */
 .print-area{pointer-events:auto;touch-action:none;cursor:grab;user-select:none}.print-area:active{cursor:grabbing}.print-area img{pointer-events:none}.export-btn{width:100%;margin-top:22px}.print-area{transition:none}.preview-stage{overflow:hidden}
+
+.editor-tools{display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;margin-top:18px}.editor-tools label{grid-column:1/-1;margin:12px 0 0}.editor-tools input[type=color]{width:70px;height:42px;cursor:pointer}.editor-tools #fontChoice,.editor-tools #saveProject,.editor-tools #openProject{grid-column:1/-1}.editor-tools .import-project-label{font-weight:700;color:#245dff}
