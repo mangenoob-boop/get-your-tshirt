@@ -32,14 +32,22 @@ const current=()=>faces[side];
 const textFontOptions=['Arial','Georgia','Impact','Courier New','Trebuchet MS','Verdana','Times New Roman','Brush Script MT','Comic Sans MS','Palatino Linotype','Anton','Bebas Neue','Oswald','Montserrat','Poppins','Raleway','Playfair Display','Lobster','Pacifico','Caveat','Permanent Marker','Bangers','Cinzel','Abril Fatface','Righteous','Orbitron'];
 const fontPreviewList=document.getElementById('fontPreviewList');
 const fontChoice=document.getElementById('fontChoice');
+const fontTrigger=document.getElementById('fontDropdownTrigger');
+const fontDropdown=document.getElementById('fontDropdown');
+const fontSelectedName=document.getElementById('fontSelectedName');
+const fontSelectedSample=document.getElementById('fontSelectedSample');
+function setFontDropdownOpen(open){fontPreviewList.hidden=!open;fontTrigger.setAttribute('aria-expanded',String(open));if(open){fontPreviewList.querySelector('.selected')?.scrollIntoView({block:'nearest'})}}
+fontTrigger.addEventListener('click',()=>setFontDropdownOpen(fontPreviewList.hidden));
+document.addEventListener('pointerdown',e=>{if(!fontDropdown.contains(e.target))setFontDropdownOpen(false)});
+fontDropdown.addEventListener('keydown',e=>{if(e.key==='Escape'){setFontDropdownOpen(false);fontTrigger.focus()}});
 for(const option of fontChoice.options){
- const button=document.createElement('button');button.type='button';button.className='font-preview-option';button.dataset.font=option.value;
+ const button=document.createElement('button');button.type='button';button.className='font-preview-option';button.dataset.font=option.value;button.setAttribute('role','option');
  const name=document.createElement('span');name.className='font-preview-name';name.textContent=option.textContent;
  const example=document.createElement('span');example.className='font-preview-sample';example.textContent='Your text';example.style.fontFamily='"'+option.value.replaceAll('"','')+'", sans-serif';
- button.append(name,example);button.addEventListener('click',()=>{fontChoice.value=option.value;current().font=option.value;renderText();document.getElementById('fontPreviewPanel').open=false});
+ button.append(name,example);button.addEventListener('click',()=>{fontChoice.value=option.value;current().font=option.value;renderText();syncFontPreview();setFontDropdownOpen(false);fontTrigger.focus()});
  fontPreviewList.appendChild(button);
 }
-function syncFontPreview(){for(const button of fontPreviewList.children){const selected=button.dataset.font===fontChoice.value;button.classList.toggle('selected',selected);button.setAttribute('aria-pressed',String(selected))}}
+function syncFontPreview(){const selected=fontChoice.selectedOptions[0];fontSelectedName.textContent=selected?.textContent||'Classique';fontSelectedSample.style.fontFamily='"'+(selected?.value||'Arial').replaceAll('"','')+'", sans-serif';for(const button of fontPreviewList.children){const active=button.dataset.font===fontChoice.value;button.classList.toggle('selected',active);button.setAttribute('aria-selected',String(active))}}
 const textControls=[['textSize','textSize',100,'%'],['textRotate','textRotate',0,'°'],['textCurve','textCurve',0,''],['textSpacing','textSpacing',0,'']];
 function drawCurvedText(el,f){
  el.replaceChildren();
