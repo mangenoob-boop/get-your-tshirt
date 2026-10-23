@@ -50,3 +50,9 @@
 .font-dropdown-menu{position:absolute;z-index:100;width:100%;left:0;top:calc(100% + 4px);max-height:340px;overflow-y:auto;background:#fff;border:1px solid #cfd7e3;border-radius:10px;box-shadow:0 12px 28px #15253b29;padding:6px}
 .font-dropdown-menu[hidden]{display:none!important}
 .font-dropdown-menu .font-preview-option{display:flex}
+
+/* Texte et image : deux calques réellement indépendants */
+.model-stage #customText{position:absolute;z-index:4;left:50%;top:52%;display:block;width:max-content;max-width:90%;height:auto;min-height:1em;transform-origin:center center;cursor:grab;pointer-events:auto;touch-action:none;user-select:none;font-weight:900;font-size:clamp(11px,1.6vw,17px);text-align:center;overflow:visible}
+.model-stage #customText:active{cursor:grabbing}
+.model-stage .print-area{z-index:3}
+.model-stage #customText .curved-letter{position:absolute}
