@@ -40,3 +40,13 @@
 .font-preview-name{font-size:12px;flex:0 0 42%;overflow-wrap:anywhere}
 .font-preview-sample{font-size:22px;line-height:1.4;flex:1;text-align:right;white-space:nowrap}
 @media(max-width:420px){.font-preview-sample{font-size:18px}.font-preview-name{flex-basis:43%}}
+
+/* Menu déroulant des polices avec exemples intégrés */
+.font-native-select{position:absolute!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important}
+.font-dropdown{position:relative;margin:6px 0 14px}
+.font-dropdown-trigger{width:100%;display:flex;align-items:center;gap:12px;min-height:48px;padding:10px 12px;background:#fff;color:#24334c;border:1px solid #cfd7e3;border-radius:10px;cursor:pointer;text-align:left}
+#fontSelectedName{flex:0 0 42%;font-size:13px;font-weight:600}
+#fontSelectedSample{flex:1;font-size:20px;text-align:right}
+.font-dropdown-menu{position:absolute;z-index:100;width:100%;left:0;top:calc(100% + 4px);max-height:340px;overflow-y:auto;background:#fff;border:1px solid #cfd7e3;border-radius:10px;box-shadow:0 12px 28px #15253b29;padding:6px}
+.font-dropdown-menu[hidden]{display:none!important}
+.font-dropdown-menu .font-preview-option{display:flex}
