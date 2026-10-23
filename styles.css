@@ -56,3 +56,6 @@
 .model-stage #customText:active{cursor:grabbing}
 .model-stage .print-area{z-index:3}
 .model-stage #customText .curved-letter{position:absolute}
+
+/* Calque texte indépendant du calque image, ancré au mannequin */
+.model-stage #customText{margin:0;left:50%;top:52%;}
