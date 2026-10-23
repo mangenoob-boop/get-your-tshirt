@@ -5,3 +5,6 @@
 
 /* Galerie des neuf mannequins validés */
 .gallery-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.gallery-card{overflow:hidden}.model-photo{width:100%;height:auto;aspect-ratio:333/429;object-fit:cover;display:block}@media(max-width:700px){.gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
+
+/* Configurateur recto verso */
+.print-area{pointer-events:auto;touch-action:none;cursor:grab;user-select:none}.print-area:active{cursor:grabbing}.print-area img{pointer-events:none}.export-btn{width:100%;margin-top:22px}.print-area{transition:none}.preview-stage{overflow:hidden}
