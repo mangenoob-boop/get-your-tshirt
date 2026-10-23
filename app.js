@@ -29,7 +29,7 @@ function updateModelPhoto(){
  photo.alt='Mannequin '+(model==='man'?'homme n° 5':'femme n° 6')+' avec T-shirt '+name;
 }
 const current=()=>faces[side];
-const textFontOptions=['Arial','Georgia','Impact','Courier New','Trebuchet MS','Verdana','Times New Roman','Brush Script MT','Comic Sans MS','Palatino Linotype'];
+const textFontOptions=['Arial','Georgia','Impact','Courier New','Trebuchet MS','Verdana','Times New Roman','Brush Script MT','Comic Sans MS','Palatino Linotype','Anton','Bebas Neue','Oswald','Montserrat','Poppins','Raleway','Playfair Display','Lobster','Pacifico','Caveat','Permanent Marker','Bangers','Cinzel','Abril Fatface','Righteous','Orbitron'];
 const textControls=[['textSize','textSize',100,'%'],['textRotate','textRotate',0,'°'],['textCurve','textCurve',0,''],['textSpacing','textSpacing',0,'']];
 function drawCurvedText(el,f){
  el.replaceChildren();
