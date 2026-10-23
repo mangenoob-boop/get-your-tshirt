@@ -16,3 +16,6 @@
 
 /* Zone transparente et taille image réglable */
 .model-shirt-overlay{opacity:0!important;pointer-events:none!important}.model-stage .print-area{overflow:visible;background:transparent!important;border:1px dashed rgba(36,93,255,.45);border-radius:6px;width:35%;height:26%;top:49%;left:50%;display:flex;justify-content:center;align-items:center}.model-stage .print-area img{display:block;max-width:100%;max-height:75%;width:auto;height:auto;object-fit:contain;flex-shrink:0}.model-stage .print-area img[hidden]{display:none}.model-stage .print-area div{max-width:100%;overflow-wrap:anywhere;text-shadow:0 1px 2px #ffffff99}.model-stage .print-area:active{border-color:#245dff}
+
+/* Afficher uniquement le visuel personnalisé, sans masque blanc ni cadre */
+#modelShirtOverlay,.model-shirt-overlay{display:none!important;background:none!important;opacity:0!important}#printArea,.model-stage .print-area{background:none!important;background-color:transparent!important;border:0!important;outline:0!important;box-shadow:none!important}#printArea::before,#printArea::after{display:none!important}
