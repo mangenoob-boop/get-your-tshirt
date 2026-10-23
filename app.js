@@ -25,7 +25,7 @@ function updateModelPhoto(){
  const name=available.includes(chosen)?chosen:'blanc';
  const filename=(model==='man'?'homme-05':'femme-06')+'-'+name+'.webp';
  photo.onerror=()=>{photo.onerror=null;photo.alt='Photographie indisponible : '+filename;};
- photo.src='mannequins-couleurs/'+filename;
+ photo.src='mannequins-couleurs/'+filename+'?v=webp-20261023-2';
  photo.alt='Mannequin '+(model==='man'?'homme n° 5':'femme n° 6')+' avec T-shirt '+name;
 }
 const current=()=>faces[side];
