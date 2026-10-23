@@ -8,6 +8,9 @@ document.getElementById('products').addEventListener('click',e=>{const b=e.targe
 const renderCart=()=>{document.getElementById('cartCount').textContent=cart.length;document.getElementById('cartItems').innerHTML=cart.length?cart.map((p,i)=>`<div class="cart-item"><div><strong>${p.name}</strong><small>${p.details}</small><small>${money(p.price)}</small></div><button data-remove="${i}" aria-label="Supprimer cet article">Retirer</button></div>`).join(''):'Ton panier est vide.';document.getElementById('total').textContent=money(cart.reduce((sum,p)=>sum+p.price,0))};renderCart();
 document.getElementById('cartItems').addEventListener('click',e=>{const b=e.target.closest('[data-remove]');if(b){cart.splice(+b.dataset.remove,1);save()}});document.getElementById('clearCart').onclick=()=>{cart=[];save()};const drawer=document.getElementById('drawer'),backdrop=document.getElementById('backdrop');const toggle=open=>{drawer.classList.toggle('open',open);drawer.setAttribute('aria-hidden',String(!open));backdrop.hidden=!open};document.getElementById('cartBtn').onclick=()=>toggle(true);document.getElementById('closeCart').onclick=()=>toggle(false);backdrop.onclick=()=>toggle(false);document.addEventListener('keydown',e=>{if(e.key==='Escape')toggle(false)});
 let color='#ffffff',side='front';const shape=document.getElementById('shirtShape'),area=document.getElementById('printArea'),image=document.getElementById('userImage'),message=document.getElementById('message'),txt=document.getElementById('customText'),sizeSlider=document.getElementById('motifSize'),upload=document.getElementById('upload');
+// Le texte doit être frère du calque image, jamais son enfant.
+const modelStage=document.querySelector('.model-stage');
+modelStage.appendChild(txt);
 let model='man';const faces={front:{text:'YOUR DESIGN',image:'',scale:100,x:0,y:0,textColor:'#245dff',font:'Arial',textX:0,textY:0,textSize:100,textRotate:0,textCurve:0,textSpacing:0},back:{text:'',image:'',scale:100,x:0,y:0,textColor:'#245dff',font:'Arial',textX:0,textY:0,textSize:100,textRotate:0,textCurve:0,textSpacing:0}};
 
 const shirtColors={"#ffffff":"blanc","#171717":"noir","#d7d9dc":"gris-clair","#1c355c":"bleu-marine","#1e68ea":"bleu-royal","#d72736":"rouge","#62794b":"kaki","#f5d12d":"jaune","#ef8b35":"orange","#80283d":"bordeaux","#fba0be":"rose"};
@@ -62,7 +65,7 @@ function drawCurvedText(el,f){
 function renderText(){
  const f=current();txt.style.color=f.textColor||'#245dff';txt.style.fontFamily=f.font||'Arial';
  txt.style.fontSize='calc(1em * '+((Number(f.textSize)||100)/100)+')';
- txt.style.transform='translate('+((Number(f.textX)||0))+'px,'+((Number(f.textY)||0))+'px) rotate('+((Number(f.textRotate)||0))+'deg)';
+ txt.style.transform='translate(calc(-50% + '+((Number(f.textX)||0))+'px),calc(-50% + '+((Number(f.textY)||0))+'px)) rotate('+((Number(f.textRotate)||0))+'deg)';
  drawCurvedText(txt,f);
  for(const [id,key,defaultValue,suffix] of textControls){const input=document.getElementById(id);input.value=f[key]??defaultValue;document.getElementById(id+'Label').textContent=String(f[key]??defaultValue)+suffix}
 }
